@@ -6,6 +6,7 @@ import redivis
 logger = logging.getLogger(__name__)
 
 REDIVIS_API_TOKEN = os.environ["REDIVIS_API_TOKEN"]
+WORDPRESS_API_KEY = os.environ["WORDPRESS_API_KEY"]
 
 if not REDIVIS_API_TOKEN:
     raise RuntimeError("Missing REDIVIS_API_TOKEN environment variable.")
@@ -13,13 +14,32 @@ if not REDIVIS_API_TOKEN:
 def get():
     
     logger.info('Getting notebooks from Redivis...')
+    
     username = "[YOUR_USERNAME]"  # Replace with your Redivis username
     workflow_name = "[WORKFLOW_NAME]"  # Replace with your workflow name
     notebook_name = "[NOTEBOOK_NAME]"  # Replace with your notebook name
+    wp_post = "[POST ID]"  # Replace with your WordPress post ID
     
     notebook = redivis.notebook(f"{username}.{workflow_name}.{notebook_name}")
     
     logger.info(f'Running {notebook_name} notebook...')
     notebook.run(wait_for_finish=True)  # Wait for the notebook to finish running
     logger.info(f'Running {notebook_name} notebook finished.')
-    # Wordpress triggers here or in Redivis notebook itself.
+    
+    # OPTIONAL - Republish the WordPress page
+    # try:
+    #     site_url = (
+    #             f"https://datahub.thetrace.org/wp-json/dataset/v1/dataset/",
+    #             f"{wp_post}/reload?key={WORDPRESS_API_KEY}"
+    #     )
+    #     response = requests.post(site_url, data=None, headers={'User-Agent': ''})
+    #     response.raise_for_status()
+    #     logger.info(response.text)
+    #     logger.info("Update complete.")
+
+    # except requests.exceptions.HTTPError as err:
+    #     logger.info(f"HTTP error occurred: {err}")
+    #     logger.info(f"Server response: {response.text}")
+
+    # except Exception as err:
+    #     logger.info(f"An error occurred: {err}")
