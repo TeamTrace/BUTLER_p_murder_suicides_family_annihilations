@@ -18,7 +18,7 @@ def get():
     username = "[YOUR_USERNAME]"  # Replace with your Redivis username
     workflow_name = "[WORKFLOW_NAME]"  # Replace with your workflow name
     notebook_name = "[NOTEBOOK_NAME]"  # Replace with your notebook name
-    wp_post = "[POST ID]"  # Replace with your WordPress post ID
+    wp_post = "[POST_ID]"  # Replace with your WordPress post ID
     
     notebook = redivis.notebook(f"{username}.{workflow_name}.{notebook_name}")
     
