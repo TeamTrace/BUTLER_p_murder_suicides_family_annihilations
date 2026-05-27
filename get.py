@@ -25,7 +25,7 @@ def get():
     notebook.run(wait_for_finish=True)  # Wait for the notebook to finish running
     logger.info(f'Running {notebook_name} notebook finished.')
     
-    OPTIONAL - Republish the WordPress page
+    # OPTIONAL - Republish the WordPress page
     try:
         site_url = (
                 f"https://datahub.thetrace.org/wp-json/dataset/v1/dataset/",
