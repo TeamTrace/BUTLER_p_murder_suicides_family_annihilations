@@ -14,11 +14,9 @@ if not REDIVIS_API_TOKEN:
 def get():
     
     logger.info('Getting notebooks from Redivis...')
-    
-    username = "[YOUR_USERNAME]"  # Replace with your Redivis username
-    workflow_name = "[WORKFLOW_NAME]"  # Replace with your workflow name
-    notebook_name = "[NOTEBOOK_NAME]"  # Replace with your notebook name
-    wp_post = "[POST_ID]"  # Replace with your WordPress post ID
+    username = "glevines"  # Replace with your Redivis username
+    workflow_name = "murder-suicides-family-annihilations-gl:j5pt"  # Replace with your workflow name
+    notebook_name = "murder-suicides-family-annihilations:15s0"  # Replace with your notebook name
     
     notebook = redivis.notebook(f"{username}.{workflow_name}.{notebook_name}")
     
