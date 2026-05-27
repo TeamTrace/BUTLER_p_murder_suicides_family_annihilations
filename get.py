@@ -17,6 +17,7 @@ def get():
     username = "glevines"  # Replace with your Redivis username
     workflow_name = "murder-suicides-family-annihilations-gl:j5pt"  # Replace with your workflow name
     notebook_name = "murder-suicides-family-annihilations:15s0"  # Replace with your notebook name
+    wp_post = "1433"
     
     notebook = redivis.notebook(f"{username}.{workflow_name}.{notebook_name}")
     
@@ -24,20 +25,20 @@ def get():
     notebook.run(wait_for_finish=True)  # Wait for the notebook to finish running
     logger.info(f'Running {notebook_name} notebook finished.')
     
-    # OPTIONAL - Republish the WordPress page
-    # try:
-    #     site_url = (
-    #             f"https://datahub.thetrace.org/wp-json/dataset/v1/dataset/",
-    #             f"{wp_post}/reload?key={WORDPRESS_API_KEY}"
-    #     )
-    #     response = requests.post(site_url, data=None, headers={'User-Agent': ''})
-    #     response.raise_for_status()
-    #     logger.info(response.text)
-    #     logger.info("Update complete.")
+    OPTIONAL - Republish the WordPress page
+    try:
+        site_url = (
+                f"https://datahub.thetrace.org/wp-json/dataset/v1/dataset/",
+                f"{wp_post}/reload?key={WORDPRESS_API_KEY}"
+        )
+        response = requests.post(site_url, data=None, headers={'User-Agent': ''})
+        response.raise_for_status()
+        logger.info(response.text)
+        logger.info("Update complete.")
 
-    # except requests.exceptions.HTTPError as err:
-    #     logger.info(f"HTTP error occurred: {err}")
-    #     logger.info(f"Server response: {response.text}")
+    except requests.exceptions.HTTPError as err:
+        logger.info(f"HTTP error occurred: {err}")
+        logger.info(f"Server response: {response.text}")
 
-    # except Exception as err:
-    #     logger.info(f"An error occurred: {err}")
+    except Exception as err:
+        logger.info(f"An error occurred: {err}")
