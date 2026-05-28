@@ -5,6 +5,7 @@ name: Python application
 
 env:
   REDIVIS_API_TOKEN: ${{ secrets.REDIVIS_API_TOKEN }}
+  WORDPRESS_API_KEY: ${{ secrets.WORDPRESS_API_KEY }}
 
 on:
   # This allows you to run the workflow manually from the Actions tab
